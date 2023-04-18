@@ -1,0 +1,11 @@
+type Tag @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  photos: [Photo] @manyToMany(relationName: "PhotoTag")
+}
+
+type Photo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  location: AWSURL
+  tags: [Tag] @manyToMany(relationName: "PhotoTag")
+}
